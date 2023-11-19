@@ -108,3 +108,6 @@ In this second section, we should explain how to compute the V<sub>4S</sub> of a
 
 We show in this GitHub some examples coded in FORTRAN and C++, as a guide. Those files should be adapted to your particular case.
 
+The code written in FORTRAN is oriented towards procedural programmers, while the code in C++ is located in a separate folder, and corresponds to an object orientation.
+
+Hope this is helpful :)
