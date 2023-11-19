@@ -99,7 +99,7 @@ $$\\begin{aligned}
     \\overrightarrow{oh_i} &=  \\frac{\|M_x\|}{\|M\|} \\hat{x}+ \\frac{\|M_y\|}{\|M\|} \\hat{y}+  \\frac{\|M_z\|}{\|M\|} \\hat{z}\\\\
     \\overrightarrow{h_i} &= \\overrightarrow{oh_i} + \\overrightarrow{O}\\end{aligned}$$
 
-<span id="fig2" label="fig2">\[fig2\]</span>
+![Medium points](Img/Tetrahedron.png?raw=true "Tetrahedron")
 
 At this point we finished the first part, finding two points. If the
 water model has already the right angle (such as SPC, SPC/E, or OPC3),
