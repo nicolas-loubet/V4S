@@ -29,7 +29,7 @@ Also, we can find a normal vector perpendicular to the two OH<sub>i</sub> vector
 
 $$\\overrightarrow{\\eta}= \\frac{\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}} {\\left\|\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}\\right\|}$$
 
-![Angles definitions](Img/Diagram.png?raw=true "Angles")
+![Angles definitions](Diagram.png?raw=true "Angles")
 
 Now, we can find the parameters of the plane (Ax + By + Cz + D = 0) that contains the oxygen and the two hydrogens, and, therefore, the two points corresponding to the hydrogens when the angle is open to the perfect tetrahedron angle. As we are using the vectors as if oxygen was the center of coordinates, then we must set D =  − Ax<sub>0</sub> − By<sub>0</sub> − Cz<sub>0</sub> = 0. Note that η⃗ = Ax̂ + Bŷ + Cẑ.
 
@@ -70,7 +70,7 @@ $$\\begin{aligned}
     \\overrightarrow{oh_i} &=  \\frac{\|M_x\|}{\|M\|} \\hat{x}+ \\frac{\|M_y\|}{\|M\|} \\hat{y}+  \\frac{\|M_z\|}{\|M\|} \\hat{z}\\\\
     \\overrightarrow{h_i} &= \\overrightarrow{oh_i} + \\overrightarrow{O}\\end{aligned}$$
 
-![Medium points](Img/Tetrahedron.png?raw=true "Tetrahedron")
+![Medium points](Tetrahedron.png?raw=true "Tetrahedron")
 
 At this point we finished the first part, finding two points. If the water model has already the right angle (such as SPC, SPC/E, or OPC3), you can start from here.
 
