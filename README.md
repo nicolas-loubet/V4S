@@ -2,12 +2,7 @@
 This is a guide related to the new V4S parameter, a structural indicator introduced in https://doi.org/10.48550/arXiv.2311.08087
 ---
 abstract: |
-  This document has for aim explaining how we compute the
-  *V*<sub>4*S*</sub> values for any molecule in a system, providing the
-  code in FORTRAN and C++. Those should be adapted for each particular
-  case. Firstly, we should explain the calculation of the tetrahedron.
-  Secondly, the two algorithm should be explained in a generic way, so
-  the same idea could be used in other cases.
+  This document has for aim explaining how we compute the V<sub>4S</sub> values for any molecule in a system, providing the code in FORTRAN and C++. Those should be adapted for each particular case. Firstly, we should explain the calculation of the tetrahedron. Secondly, the two algorithm should be explained in a generic way, so the same idea could be used in other cases.
 author:
 - Nicolás A. Loubet<sup>1</sup>
 - Alejandro R. Verde<sup>1</sup>
@@ -16,48 +11,30 @@ author:
 
 # The perfect tetrahedron
 
-In this first section, we will explain how to calculate the four points
-of the perfect tetrahedron for a water molecule. This is intended for
-water models such as TIP3P, TIP4P, TIP5P, SPC, SPC/E, among others. The
-model must have 3 coordinates for each molecule: The two hydrogens and
-the oxygen. This last one will be the center of the tetrahedron. The
-necessary steps can be summarized in two objectives:
+In this first section, we will explain how to calculate the four points of the perfect tetrahedron for a water molecule. This is intended for water models such as TIP3P, TIP4P, TIP5P, SPC, SPC/E, among others. The model must have 3 coordinates for each molecule: The two hydrogens and the oxygen. This last one will be the center of the tetrahedron. The necessary steps can be summarized in two objectives:
 
-1.  Open the angle H-O-H (not necessary if the angle is already the
-    desirable *a**r**c**c**o**s*(−1/3), the perfect tetrahedron angle
-    109.471<sup>∘</sup> = 1, 9106*r**a**d*).
+1.  Open the angle H-O-H (not necessary if the angle is already the desirable arccos(−1/3), the perfect tetrahedron angle 109.471<sup>∘</sup> = 1, 9106rad).
 
 2.  Locate the opposite two points that complete the tetrahedron.
 
-In this sense, from the three initial coordinates we can find the two
-vectors that conform the molecule, that we should name
-$\\overrightarrow{OH_1}$ and $\\overrightarrow{OH_2}$.
+In this sense, from the three initial coordinates we can find the two vectors that conform the molecule, that we should name $\\overrightarrow{OH_1}$ and $\\overrightarrow{OH_2}$.
 
 $$\\overrightarrow{OH_i}=\\overrightarrow{H_i}-\\overrightarrow{O}$$
 
-From this two vectors we can find the bisector. This one is parallel to
-the dipole moment.
+From this two vectors we can find the bisector. This one is parallel to the dipole moment.
 
 $$\\overrightarrow{b}=\\frac{\\overrightarrow{OH_1}} {\\left\|\\overrightarrow{OH_1}\\right\|} + \\frac{\\overrightarrow{OH_2}} {\\left\|\\overrightarrow{OH_2}\\right\|}$$
 
-Also, we can find a normal vector perpendicular to the two
-*O**H*<sub>*i*</sub> vectors, using the cross product.
+Also, we can find a normal vector perpendicular to the two OH<sub>i</sub> vectors, using the cross product.
 
 $$\\overrightarrow{\\eta}= \\frac{\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}} {\\left\|\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}\\right\|}$$
 
-<span id="fig1" label="fig1">\[fig1\]</span>
+![Alt text](Img/Diagram.png?raw=true "Title")
 
-Now, we can find the parameters of the plane
-(*A**x* + *B**y* + *C**z* + *D* = 0) that contains the oxygen and the
-two hydrogens, and, therefore, the two points corresponding to the
-hydrogens when the angle is open to the perfect tetrahedron angle. As we
-are using the vectors as if oxygen was the center of coordinates, then
-we must set
-*D* =  − *A**x*<sub>0</sub> − *B**y*<sub>0</sub> − *C**z*<sub>0</sub> = 0.
-Note that *η⃗* = *A**x̂* + *B**ŷ* + *C**ẑ*
+Now, we can find the parameters of the plane (Ax + By + Cz + D = 0) that contains the oxygen and the two hydrogens, and, therefore, the two points corresponding to the hydrogens when the angle is open to the perfect tetrahedron angle. As we are using the vectors as if oxygen was the center of coordinates, then we must set D =  − Ax<sub>0</sub> − By<sub>0</sub> − Cz<sub>0</sub> = 0. Note that η⃗ = Ax̂ + Bŷ + Cẑ
 
 For computing the point i of the tetrahedron, the nearest to the
-*H*<sub>*i*</sub>, we should note that the dot products are:
+H<sub>i</sub>, we should note that the dot products are:
 
 $$\\begin{aligned}
     \\overrightarrow{oh_i} \\cdot \\overrightarrow{b} &= R \\left\| \\overrightarrow{b} \\right\| cos(\\theta)\\\\
@@ -66,8 +43,8 @@ Being R the distance between the oxygen and each point of the
 tetrahedron, that we defined as 1Å.
 
 From this data (and the plane definition), we can find the coordinates
-of the *o**h*<sub>*i*</sub> vectors (for example, with the Cramer’s
-rule). Then, we can find the perfect point (*h*<sub>1, 2</sub>) for each
+of the oh<sub>i</sub> vectors (for example, with the Cramer’s
+rule). Then, we can find the perfect point (h<sub>1, 2</sub>) for each
 one.
 
 $$M=
