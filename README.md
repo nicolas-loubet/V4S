@@ -12,7 +12,6 @@ author:
 - Nicolás A. Loubet<sup>1</sup>
 - Alejandro R. Verde<sup>1</sup>
 - Gustavo A. Appignanesi<sup>1\*</sup>
-title: README
 ---
 
 # The perfect tetrahedron
