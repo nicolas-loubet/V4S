@@ -46,7 +46,7 @@ Also, we can find a normal vector perpendicular to the two
 
 $$\\overrightarrow{\\eta}= \\frac{\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}} {\\left\|\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}\\right\|}$$
 
-<span id="fig1" label="fig1">\[fig1\]</span>
+![Angles definitions](Img/Diagram.png?raw=true "Angles")
 
 Now, we can find the parameters of the plane
 (*A**x* + *B**y* + *C**z* + *D* = 0) that contains the oxygen and the
