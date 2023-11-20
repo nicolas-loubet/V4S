@@ -38,6 +38,7 @@ For computing the point i of the tetrahedron, the nearest to the H<sub>i</sub>, 
 $$\\begin{aligned}
     \\overrightarrow{oh_i} \\cdot \\overrightarrow{b} &= R \\left\| \\overrightarrow{b} \\right\| cos(\\theta)\\\\
     \\overrightarrow{oh_i} \\cdot \\overrightarrow{OH_i} &= R \\left\| \\overrightarrow{OH_i} \\right\| cos(\\theta-\\phi)\\end{aligned}$$
+
 Being R the distance between the oxygen and each point of the tetrahedron, that we defined as 1Å.
 
 From this data (and the plane definition), we can find the coordinates of the oh<sub>i</sub> vectors (for example, with the Cramer’s rule). Then, we can find the perfect point (h<sub>1, 2</sub>) for each one.
