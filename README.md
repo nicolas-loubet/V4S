@@ -81,7 +81,7 @@ Also, we need to find a vector that is parallel to the line formed by the two e<
 
 $$\\begin{aligned}
     \\overrightarrow{m_h} &=  \\frac{1}{2} \\left( \\overrightarrow{h_1} + \\overrightarrow{h_2} \\right)\\\\
-    \\delta &= \\left\| \\overrightarrow{h_i} - \\overrightarrow{m_h} \\right\|\\\\
+    \\delta &= \vert \\overrightarrow{h_i} - \\overrightarrow{m_h} \vert\\\\
     \\overrightarrow{m_e} &= 2\\overrightarrow{O} - \\overrightarrow{m_h}\\\\
     \\overrightarrow{e\_{1,2}} &= \\pm \\delta \\overrightarrow{\\eta} + \\overrightarrow{m_e}\\end{aligned}$$
 
