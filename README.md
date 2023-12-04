@@ -23,7 +23,7 @@ $$\\overrightarrow{OH_i}=\\overrightarrow{H_i}-\\overrightarrow{O}$$
 
 From this two vectors we can find the bisector. This one is parallel to the dipole moment.
 
-$$\\overrightarrow{b}=\\frac{\\overrightarrow{OH_1}} {\\left\bar\\overrightarrow{OH_1}\\right\bar} + \\frac{\\overrightarrow{OH_2}} {\\left\bar\\overrightarrow{OH_2}\\right\bar}$$
+$$\\overrightarrow{b}=\\frac{\\overrightarrow{OH_1}} {\vert\\overrightarrow{OH_1}\vert} + \\frac{\\overrightarrow{OH_2}} {\vert\\overrightarrow{OH_2}\vert}$$
 
 Also, we can find a normal vector perpendicular to the two OH<sub>i</sub> vectors, using the cross product.
 
