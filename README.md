@@ -27,7 +27,7 @@ $$\\overrightarrow{b}=\\frac{\\overrightarrow{OH_1}} {\vert\\overrightarrow{OH_1
 
 Also, we can find a normal vector perpendicular to the two OH<sub>i</sub> vectors, using the cross product.
 
-$$\\overrightarrow{\\eta}= \\frac{\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}} {\\left\|\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}\\right\|}$$
+$$\\overrightarrow{\\eta}= \\frac{\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}} {\vert\\overrightarrow{OH_1}\\times\\overrightarrow{OH_2}\vert}$$
 
 ![Angles definitions](Diagram.png?raw=true "Angles")
 
@@ -36,8 +36,8 @@ Now, we can find the parameters of the plane (Ax + By + Cz + D =�
 For computing the point i of the tetrahedron, the nearest to the H<sub>i</sub>, we should note that the dot products are:
 
 $$\\begin{aligned}
-    \\overrightarrow{oh_i} \\cdot \\overrightarrow{b} &= R \\left\| \\overrightarrow{b} \\right\| cos(\\theta)\\\\
-    \\overrightarrow{oh_i} \\cdot \\overrightarrow{OH_i} &= R \\left\| \\overrightarrow{OH_i} \\right\| cos(\\theta-\\phi)\\end{aligned}$$
+    \\overrightarrow{oh_i} \\cdot \\overrightarrow{b} &= R \vert \\overrightarrow{b} \vert cos(\\theta)\\\\
+    \\overrightarrow{oh_i} \\cdot \\overrightarrow{OH_i} &= R \vert \\overrightarrow{OH_i} \vert cos(\\theta-\\phi)\\end{aligned}$$
 
 Being R the distance between the oxygen and each point of the tetrahedron, that we defined as 1Å.
 
@@ -51,20 +51,20 @@ $$M=
     \\end{bmatrix}$$
 $$M_x=
     \\begin{bmatrix}
-        R \\left\| \\overrightarrow{b} \\right\| cos(\\theta) & y\_{\\overrightarrow{b}} & z\_{\\overrightarrow{b}} \\\\
-        R \\left\| \\overrightarrow{OH_i} \\right\| cos(\\theta-\\phi) & y\_{\\overrightarrow{OH_i}} & z\_{\\overrightarrow{OH_i}} \\\\
+        R \vert \\overrightarrow{b} \vert cos(\\theta) & y\_{\\overrightarrow{b}} & z\_{\\overrightarrow{b}} \\\\
+        R \vert \\overrightarrow{OH_i} \vert cos(\\theta-\\phi) & y\_{\\overrightarrow{OH_i}} & z\_{\\overrightarrow{OH_i}} \\\\
         0 & B & C \\\\
     \\end{bmatrix}$$
 $$M_y=
     \\begin{bmatrix}
-        x\_{\\overrightarrow{b}} & R \\left\| \\overrightarrow{b} \\right\| cos(\\theta) & z\_{\\overrightarrow{b}} \\\\
-        x\_{\\overrightarrow{OH_i}} & R \\left\| \\overrightarrow{OH_i} \\right\| cos(\\theta-\\phi) & z\_{\\overrightarrow{OH_i}} \\\\
+        x\_{\\overrightarrow{b}} & R \vert \\overrightarrow{b} \vert cos(\\theta) & z\_{\\overrightarrow{b}} \\\\
+        x\_{\\overrightarrow{OH_i}} & R \vert \\overrightarrow{OH_i} \vert cos(\\theta-\\phi) & z\_{\\overrightarrow{OH_i}} \\\\
         A & 0 & C \\\\
     \\end{bmatrix}$$
 $$M_z=
     \\begin{bmatrix}
-        x\_{\\overrightarrow{b}} & y\_{\\overrightarrow{b}} & R \\left\| \\overrightarrow{b} \\right\| cos(\\theta) \\\\
-        x\_{\\overrightarrow{OH_i}} & y\_{\\overrightarrow{OH_i}} & R \\left\| \\overrightarrow{OH_i} \\right\| cos(\\theta-\\phi) \\\\
+        x\_{\\overrightarrow{b}} & y\_{\\overrightarrow{b}} & R \vert \\overrightarrow{b} \vert cos(\\theta) \\\\
+        x\_{\\overrightarrow{OH_i}} & y\_{\\overrightarrow{OH_i}} & R \vert \\overrightarrow{OH_i} \vert cos(\\theta-\\phi) \\\\
         A & B & 0
     \\end{bmatrix}$$
 $$\\begin{aligned}
