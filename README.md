@@ -1,5 +1,5 @@
 # V4S
-This is a guide related to the new V4S parameter, a structural indicator introduced in https://doi.org/10.48550/arXiv.2311.08087
+This is a guide related to the new V4S parameter, a structural indicator introduced in https://doi.org/10.1063/5.0203989
 ---
 
   This document has for aim explaining how we compute the V<sub>4S</sub> values for any molecule in a system, providing the code in FORTRAN and C++. Those should be adapted for each particular case. Firstly, we should explain the calculation of the tetrahedron. Secondly, the two algorithm should be explained in a generic way, so the same idea could be used in other cases.
