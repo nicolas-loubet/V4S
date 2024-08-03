@@ -1,0 +1,7 @@
+#File for execution
+
+#XYZ file with coordinates
+Graphene.pdb
+
+#Information for computing V_ij
+topology.dat
