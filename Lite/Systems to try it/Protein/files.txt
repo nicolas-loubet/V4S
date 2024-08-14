@@ -1,0 +1,7 @@
+#File for execution
+
+#XYZ file with coordinates
+BRD3.pdb
+
+#Information for computing V_ij
+topology.dat
