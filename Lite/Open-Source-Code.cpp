@@ -49,6 +49,15 @@ class Vector {
 		}
 
 		/**
+         * To compare two vectors in magnitude. Otherwise, use ==
+         * @param v Other vector to compare
+         * @return true if both vectors have the same magnitude (be careful with the precision managed)
+         */
+		bool equalMagnitud(Vector& v) {
+			return magnitude()==v.magnitude();
+		}
+
+		/**
          * OVERLOAD of operator + for two vectors
          * @param v Other vector to sum
          * @return The sum of each component in a new *Vector
@@ -102,8 +111,91 @@ class Vector {
 			return new Vector(y*v.z-z*v.y, z*v.x-x*v.z, x*v.y-y*v.x);
 		}
 
+		/**
+		 * OVERLOAD of operator == for two vectors
+         * To compare two vectors in component. For comparing magnitud use equalsMagnitud()
+         * @param v Other vector to compare
+         * @return true if both vectors have the same components in x, y, and z (be careful with the precision managed)
+         */
+		bool operator ==(const Vector& v) {
+			return x==v.x && y==v.y && z==v.z;
+		}
+
+		/**
+		 * OVERLOAD of operator != for two vectors
+         * To compare two vectors in component. For comparing magnitud use !equalsMagnitud()
+         * @param v Other vector to compare
+         * @return true if both vectors DO NOT have the same components in x, y, and z
+         */
+		bool operator !=(const Vector& v) {
+			return !(*this==v);
+		}
+
+		/**
+		 * OVERLOAD of operator < for two vectors
+         * To compare two vectors in magnitud
+         * @param v Other vector to compare
+         * @return true if this vector has a minor magnitud than v
+         */
+		bool operator <(const Vector& v) {
+			return magnitude()<v.magnitude();
+		}
+
+		/**
+		 * OVERLOAD of operator > for two vectors
+         * To compare two vectors in magnitud
+         * @param v Other vector to compare
+         * @return true if this vector has a major magnitud than v
+         */
+		bool operator >(const Vector& v) {
+			return magnitude()>v.magnitude();
+		}
+
+		/**
+		 * OVERLOAD of operator <= for two vectors
+         * To compare two vectors in magnitud
+         * @param v Other vector to compare
+         * @return true if this vector has a minor or equal magnitud than v
+         */
+		bool operator <=(const Vector& v) {
+			return magnitude()<=v.magnitude();
+		}
+
+		/**
+		 * OVERLOAD of operator >= for two vectors
+         * To compare two vectors in magnitud
+         * @param v Other vector to compare
+         * @return true if this vector has a major or equal magnitud than v
+         */
+		bool operator >=(const Vector& v) {
+			return magnitude()>=v.magnitude();
+		}
+
 };
 
+/**
+ * OVERLOAD of operator << for a Vector
+ * Writes the components of the vector in the format: -->(x,y,z)
+ * @param o Ostream to write in
+ * @param v Vector to write
+ * @return Ostream with the writed string
+ */
+std::ostream& operator <<(std::ostream& o, Vector& v) {
+    o << "-->(" << v.x << "," << v.y << "," << v.z << ")";
+    return o;
+}
+
+/**
+ * OVERLOAD of operator << for a *Vector
+ * Writes the components of the vector in the format: -->(x,y,z)
+ * @param o Ostream to write in
+ * @param v Vector to write
+ * @return Ostream with the writed string
+ */
+std::ostream& operator <<(std::ostream& o, Vector* v) {
+    o << "-->(" << v->x << "," << v->y << "," << v->z << ")";
+    return o;
+}
 
 struct Tetrahedron {
     Vector* H1;
@@ -307,6 +399,7 @@ Tetrahedron getPerfectTetrahedron(Vector* O_real, Vector* H1_real, Vector* H2_re
     return output;
 }
 
+
 struct Atom {
     int serial;
     std::string name;
@@ -500,6 +593,8 @@ int main() {
     std::string line;
     std::string file1, file2;
     int count = 0;
+    float radii_study_minimum= 0.0;
+    float radii_study_maximum= 3.5;
 
     // Read lines from the input file
     while (std::getline(inputFile, line)) {
@@ -514,6 +609,14 @@ int main() {
             count++;
         } else if (count == 1) {
             file2 = line;
+            count++;
+        } else if (count == 2) {
+            radii_study_minimum= std::stof(line);
+            count++;
+            std::cout << "Molecules will be studied at a minimum distance of: " << radii_study_minimum << std::endl;
+        } else if (count == 3) {
+            radii_study_maximum= std::stof(line);
+            std::cout << "Molecules will be studied at a maximum distance of: " << radii_study_maximum << std::endl;
             break;
         }
     }
@@ -616,24 +719,34 @@ int main() {
     std::cout << "Box size: " << box.x << " " << box.y << " " << box.z << std::endl;
     std::cout << "Water molecules: " << waterMolecules.size() << "\tNon water molecules: " << nonWaterMolecules.size() << std::endl;
 
+    int number_of_hidrophylic_molecules= 0;
+    int number_of_hidrophofic_molecules= 0;
+
     for (int i_molecule= 0; i_molecule < waterMolecules.size(); i_molecule++) {
         bool compute_v4s= false;
         for (Molecule nwm : nonWaterMolecules) {
             for (Atom a_nwm : nwm.atoms) {
-                if(distanceBetween(waterMolecules[i_molecule],a_nwm,box) < 6) {
+                float distance= distanceBetween(waterMolecules[i_molecule],a_nwm,box);
+                if(distance <= radii_study_maximum && distance >= radii_study_minimum) {
                     compute_v4s= true;
                     break;
                 }
             }
         }
-
         if(!compute_v4s) continue;
         float v4s = computeV4S(waterMolecules[i_molecule], waterMolecules, nonWaterMolecules, box, moleculeData);
         for (int i_atom= 0; i_atom < waterMolecules[i_molecule].atoms.size(); i_atom++) {
             waterMolecules[i_molecule].atoms[i_atom].tempFactor = v4s;
         }
+
+        if(v4s < -12)
+            number_of_hidrophylic_molecules++;
+        else
+            number_of_hidrophofic_molecules++;
     }
 
+    std::cout << "Number of molecules with V4S < -12: " << number_of_hidrophylic_molecules << std::endl;
+    std::cout << "Number of molecules with V4S > -12: " << number_of_hidrophofic_molecules << std::endl;
     std::cout << "Writing output file: modified_" + file1 << std::endl;
 
     // Escribir el archivo PDB actualizado
