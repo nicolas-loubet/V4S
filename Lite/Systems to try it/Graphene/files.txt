@@ -5,3 +5,7 @@ Graphene.pdb
 
 #Information for computing V_ij
 topology.dat
+
+#Distance from the solute to be evaluated
+0.0
+6.0
